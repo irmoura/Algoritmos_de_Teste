@@ -132,7 +132,7 @@ public class Dia_da_Semana {
             JOptionPane.showMessageDialog(null,"Você nasceu no dia de Sábado");
         }
         else
-        if(soma%7 < 7 && soma%7 > 5){
+        if(soma%7 < 7 || soma%7 > 5){
             JOptionPane.showMessageDialog(null,"Você nasceu no dia de Domingo");
         }
         
