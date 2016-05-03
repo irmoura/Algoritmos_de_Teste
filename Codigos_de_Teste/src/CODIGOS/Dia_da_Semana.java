@@ -19,15 +19,15 @@ public class Dia_da_Semana {
     
     public static void main(String args[]){
         
-        Ano_Nascimento = "2000";//JOptionPane.showInputDialog(null,"Digite o seu ano de nascimento: "+ "\n(ex: 1989)");
+        Ano_Nascimento = JOptionPane.showInputDialog(null,"Digite o seu ano de nascimento: "+ "\n(ex: 1989)");
         
         Ano_Nascimento_Int = Integer.parseInt(Ano_Nascimento);
         
-        Mes_Nascimento = "05";//JOptionPane.showInputDialog(null,"Digite o seu mês de nascimento: "+ "\n(ex: 12)");
+        Mes_Nascimento = JOptionPane.showInputDialog(null,"Digite o seu mês de nascimento: "+ "\n(ex: 12)");
         
         Mes_Nascimento_Int = Integer.parseInt(Mes_Nascimento);
         
-        Dia_Nascimento = "3";//JOptionPane.showInputDialog(null,"Digite o seu dia de nascimento: "+ "\n(ex: 30)");
+        Dia_Nascimento = JOptionPane.showInputDialog(null,"Digite o seu dia de nascimento: "+ "\n(ex: 30)");
         
         Dia_Nascimento_Int = Integer.parseInt(Dia_Nascimento);
         
@@ -41,8 +41,14 @@ public class Dia_da_Semana {
         }
         else
         if(
-          (Ano_Nascimento_Int % 4 == 0) && (Mes_Nascimento_Int < 3) && (Dia_Nascimento_Int == 29 ) ||
-          (Ano_Nascimento_Int % 4 == 0) && (Mes_Nascimento_Int < 3) && (Dia_Nascimento_Int < 29)
+          (Ano_Nascimento_Int % 4 == 0) && (Mes_Nascimento_Int  > 2)
+          ){//SENDO BISSEXTO
+            B = A / 4;
+        }
+        else
+        if(
+          (Ano_Nascimento_Int % 4 == 0) && (Mes_Nascimento_Int  < 3) && (Dia_Nascimento_Int  == 29) ||
+          (Ano_Nascimento_Int % 4 == 0) && (Mes_Nascimento_Int  < 3) && (Dia_Nascimento_Int  < 29)
           ){//SENDO BISSEXTO
             B = A / 4;
             B -= 1;
