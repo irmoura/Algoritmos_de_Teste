@@ -108,31 +108,31 @@ public class Dia_da_Semana {
         
         soma = A + B + C + D;
         
-        if(soma%7 < 1 || soma%7 == 0){
+        if(soma%7 == 0){
             JOptionPane.showMessageDialog(null,"Você nasceu no dia de Segunda-Feira");
         }
         else
-        if(soma%7 < 2 && soma%7 > 0){
+        if(soma%7 == 1){
             JOptionPane.showMessageDialog(null,"Você nasceu no dia de Terça-Feira");
         }
         else
-        if(soma%7 < 3 && soma%7 > 1){
+        if(soma%7 == 2){
             JOptionPane.showMessageDialog(null,"Você nasceu no dia de Quarta-Feira");
         }
         else
-        if(soma%7 < 4 && soma%7 > 2){
+        if(soma%7 == 3){
             JOptionPane.showMessageDialog(null,"Você nasceu no dia de Quinta-Feira");
         }
         else
-        if(soma%7 < 5 && soma%7 > 3){
+        if(soma%7 == 4){
             JOptionPane.showMessageDialog(null,"Você nasceu no dia de Sexta-Feira");
         }
         else
-        if(soma%7 < 6 && soma%7 > 5){
+        if(soma%7 == 5){
             JOptionPane.showMessageDialog(null,"Você nasceu no dia de Sábado");
         }
         else
-        if(soma%7 < 7 || soma%7 > 5){
+        if(soma%7 == 6){
             JOptionPane.showMessageDialog(null,"Você nasceu no dia de Domingo");
         }
         
