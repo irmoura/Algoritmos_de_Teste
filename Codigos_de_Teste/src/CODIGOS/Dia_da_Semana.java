@@ -5,6 +5,7 @@
  */
 package CODIGOS;
 
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 
 /**
@@ -108,31 +109,37 @@ public class Dia_da_Semana {
         
         soma = A + B + C + D;
         
-        if(soma%7 == 0){
+        soma = soma%7;
+        
+        DecimalFormat deci = new DecimalFormat("0");
+        
+        String resultado = deci.format(soma);
+        
+        if(resultado.equals("0")){
             JOptionPane.showMessageDialog(null,"Você nasceu no dia de Segunda-Feira");
         }
         else
-        if(soma%7 == 1){
+        if(resultado.equals("1")){
             JOptionPane.showMessageDialog(null,"Você nasceu no dia de Terça-Feira");
         }
         else
-        if(soma%7 == 2){
+        if(resultado.equals("2")){
             JOptionPane.showMessageDialog(null,"Você nasceu no dia de Quarta-Feira");
         }
         else
-        if(soma%7 == 3){
+        if(resultado.equals("3")){
             JOptionPane.showMessageDialog(null,"Você nasceu no dia de Quinta-Feira");
         }
         else
-        if(soma%7 == 4){
+        if(resultado.equals("4")){
             JOptionPane.showMessageDialog(null,"Você nasceu no dia de Sexta-Feira");
         }
         else
-        if(soma%7 == 5){
+        if(resultado.equals("5")){
             JOptionPane.showMessageDialog(null,"Você nasceu no dia de Sábado");
         }
         else
-        if(soma%7 == 6){
+        if(resultado.equals("6")){
             JOptionPane.showMessageDialog(null,"Você nasceu no dia de Domingo");
         }
         
