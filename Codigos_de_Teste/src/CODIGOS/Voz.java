@@ -5,8 +5,8 @@
  */
 package CODIGOS;
 
-import com.sun.speech.freetts.Voice;
-import com.sun.speech.freetts.VoiceManager;
+//import com.sun.speech.freetts.Voice;
+//import com.sun.speech.freetts.VoiceManager;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
@@ -18,16 +18,16 @@ public class Voz {
     public static void main(String args[]) throws IOException{
     
         String frase = JOptionPane.showInputDialog(null,"");
-        Fala(frase);
+        //Fala(frase);
         
     }
     
-    public static void Fala(String frase){
+    /*public static void Fala(String frase){
     Voice voice;
     VoiceManager vm = VoiceManager.getInstance();
     voice = vm.getVoice("kevin16");
     voice.allocate();
     voice.speak(frase);
-    }
+    }*/
     
 }
