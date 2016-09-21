@@ -17,13 +17,14 @@ public class Teste_de_Possibilidades {
     /**
      *
      */
-    public static int quantidade_de_linhas = 100;//ok
+    public static int quantidade_de_linhas = 1000;//ok
     public static int quantidade_de_colunas = 6;//ok
     public static int[] vetor_numero_aleatorio = new int[quantidade_de_colunas];
     public static String[] sequencia_unitaria = new String[quantidade_de_colunas];
     public static String[] sequencia_completa = new String[quantidade_de_linhas];
     public static String[] sequencia_completa2 = new String[quantidade_de_linhas];
     public static int count;
+    public static int indice;
     
     public static void CriaSequencia(){
         for(int i=0; i < quantidade_de_linhas; i++){//FOR I
@@ -74,18 +75,27 @@ public class Teste_de_Possibilidades {
         
          CriaSequencia();
          
+         indice = 0;
+         
          for(int i=0; i<sequencia_completa.length;i++){
             System.out.print(sequencia_completa[i]+"\n");//Imprime a linha
         }
          
          for(int i=0; i<sequencia_completa.length;i++){
             if(i>0){
-                if(sequencia_completa2[count].equals(sequencia_completa[i])){
-                System.out.println("A linha "+(i+1)+" é igual a linha 1");
+                if(sequencia_completa2[indice].equals(sequencia_completa[i])){
+                System.out.println("A linha "+(i+1)+" é igual a linha "+(indice+1));
                 count++;
             }
             }
         }
-        System.out.print("Encontradas "+count+" linha iguais.");
+        if(count==1){
+             System.out.print("Encontrada "+count+" linha iguai a linha "+(indice+1));
+             System.out.print("\n");
+        }else
+        if(count>1){
+            System.out.print("Encontradas "+count+" linhas iguais a linha "+(indice+1));
+            System.out.print("\n");
+        }
     }
 }
