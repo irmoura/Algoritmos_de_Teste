@@ -6,6 +6,8 @@
 package CODIGOS;
 
 import java.awt.event.ActionEvent;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.Timer;
 
 /**
@@ -16,9 +18,13 @@ public class Temporizador extends javax.swing.JFrame {
     
     public Timer timer;
     
-    public int count;
-    public int segundos;
     public int segundos_totais;
+    public int minutos_totais;
+    public int horas_totais;
+    
+    public String segundos_string;
+    public String minutos_string;
+    public String horas_string;
 
     /**
      * Creates new form Temporizador
@@ -27,27 +33,58 @@ public class Temporizador extends javax.swing.JFrame {
         initComponents();
     }
     
-    public void inicia_contador(){
-        
-        segundos_totais = 60;
-        
+    public void inicia_contador(){    
+        segundos_totais = jComboBox_Segundos.getSelectedIndex();
+        minutos_totais = jComboBox_Minutos.getSelectedIndex();
+        horas_totais = jComboBox_Horas.getSelectedIndex();
+//        Date date = new Date();
+//        segundos_totais = 60-(date.getSeconds()+1);
+//        minutos_totais = 60-date.getMinutes();
+//        horas_totais = 21-date.getHours();
         timer = new Timer(1000, (ActionEvent e) -> {
-
-            segundos_totais--;
-            
-            //        System.out.println(segundos_totais);
-            jComboBox_Segundos.setSelectedIndex((segundos_totais-count));
-            
-            if(segundos_totais == 0){
-                segundos_totais = 60;
+            if(segundos_totais  < 0){
+                if(horas_totais > 0 && minutos_totais == 0){
+                    minutos_totais = 60;
+                    horas_totais--;
+                    jComboBox_Horas.setSelectedIndex(horas_totais);
+                }
+                if(minutos_totais > 0){
+                    segundos_totais = 59;
+                    minutos_totais--;
+                    jComboBox_Minutos.setSelectedIndex(minutos_totais);
+                }else if(minutos_totais == 0){
+                    timer.stop();
+                }
             }
-            
-
-
-            
-
+            if(segundos_totais >= 0){
+                jComboBox_Segundos.setSelectedIndex(segundos_totais);
+            }
+            /******************************************************************/
+            if(segundos_totais > 9){
+            segundos_string = ""+segundos_totais;
+            }else if(segundos_totais < 10){
+            segundos_string = "0"+segundos_totais;
+            }
+            /******************************************************************/
+            if(minutos_totais > 9){
+                minutos_string = ""+minutos_totais;
+            }else if(minutos_totais < 10){
+                minutos_string = "0"+minutos_totais;
+            }
+            /******************************************************************/
+            if(horas_totais > 9){
+                horas_string = ""+horas_totais;
+            }else if(horas_totais < 10){
+                horas_string = "0"+horas_totais;
+            }
+            /******************************************************************/
+            String tempo_completo = horas_string+":"+minutos_string+":"+segundos_string;
+            if((segundos_totais != -1)){
+//            System.out.println(tempo_completo);
+                jLabel1.setText(tempo_completo);
+            }
+            segundos_totais--;
         });
-
         timer.start();
     }
     
@@ -71,6 +108,7 @@ public class Temporizador extends javax.swing.JFrame {
         jComboBox_Segundos = new javax.swing.JComboBox<>();
         jComboBox_Minutos = new javax.swing.JComboBox<>();
         jComboBox_Horas = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -114,6 +152,9 @@ public class Temporizador extends javax.swing.JFrame {
 
         jComboBox_Horas.setFont(new java.awt.Font("Tahoma", 1, 42)); // NOI18N
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 59)); // NOI18N
+        jLabel1.setText("00:00:00");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -134,7 +175,8 @@ public class Temporizador extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox_Minutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox_Segundos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jComboBox_Segundos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -145,7 +187,9 @@ public class Temporizador extends javax.swing.JFrame {
                     .addComponent(jComboBox_Segundos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox_Minutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox_Horas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_iniciar)
                     .addComponent(btn_parar)
@@ -161,7 +205,7 @@ public class Temporizador extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         
-        for(int i = 0; i < 61; i++){
+        for(int i = 0; i < 60; i++){
             if(i < 10){
                 jComboBox_Segundos.addItem("0"+i);
             }else{
@@ -193,7 +237,6 @@ public class Temporizador extends javax.swing.JFrame {
     private void btn_pararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pararActionPerformed
         // TODO add your handling code here:
         para_contador();
-        count = 0;
     }//GEN-LAST:event_btn_pararActionPerformed
 
     private void btn_reiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reiniciarActionPerformed
@@ -205,6 +248,7 @@ public class Temporizador extends javax.swing.JFrame {
         jComboBox_Segundos.setSelectedIndex(0);
         jComboBox_Minutos.setSelectedIndex(0);
         jComboBox_Horas.setSelectedIndex(0);
+        jLabel1.setText("00:00:00");
     }//GEN-LAST:event_btn_zerarActionPerformed
 
     /**
@@ -253,5 +297,6 @@ public class Temporizador extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox_Horas;
     private javax.swing.JComboBox<String> jComboBox_Minutos;
     private javax.swing.JComboBox<String> jComboBox_Segundos;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

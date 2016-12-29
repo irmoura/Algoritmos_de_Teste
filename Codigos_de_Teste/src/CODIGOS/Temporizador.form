@@ -46,6 +46,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jComboBox_Segundos" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -60,7 +61,9 @@
                   <Component id="jComboBox_Minutos" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jComboBox_Horas" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="110" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btn_iniciar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btn_parar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -143,6 +146,14 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="59" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="00:00:00"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
