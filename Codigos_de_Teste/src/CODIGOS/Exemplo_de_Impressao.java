@@ -1,7 +1,6 @@
 package CODIGOS;
 
 import java.awt.Canvas;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.PrintJob;
 import java.awt.Toolkit;
@@ -29,6 +28,7 @@ public class Exemplo_de_Impressao extends JFrame {
   }
 }
 class MyCanvas extends Canvas {
+  @Override
   public void paint(Graphics g) {
       
     Calendar DIA_ATUAL = Calendar.getInstance();
@@ -37,33 +37,31 @@ class MyCanvas extends Canvas {
         int mes = DIA_ATUAL.get(Calendar.MONTH);// RECEBE O MES ATUAL ...
         int ano = DIA_ATUAL.get(Calendar.YEAR);// RECEBE O ANO ATUAL ...
         int dia_da_semana = DIA_ATUAL.get(Calendar.DAY_OF_WEEK);//RECEBE O DIA DA SEMANA
-        if(dia_da_semana == 1){
-            dia_da_semana_str = "DOM";
-        }
-        else
-        if(dia_da_semana == 2){
-            dia_da_semana_str = "SEG";
-        }
-        else
-        if(dia_da_semana == 3){
-            dia_da_semana_str = "TER";
-        }
-        else
-        if(dia_da_semana == 4){
-            dia_da_semana_str = "QUA";
-        }
-        else
-        if(dia_da_semana == 5){
-            dia_da_semana_str = "QUI";
-        }
-        else
-        if(dia_da_semana == 6){
-            dia_da_semana_str = "SEX";
-        }
-        else
-        if(dia_da_semana == 7){
-            dia_da_semana_str = "SAB";
-        }
+      switch (dia_da_semana) {
+          case 1:
+              dia_da_semana_str = "DOM";
+              break;
+          case 2:
+              dia_da_semana_str = "SEG";
+              break;
+          case 3:
+              dia_da_semana_str = "TER";
+              break;
+          case 4:
+              dia_da_semana_str = "QUA";
+              break;
+          case 5:
+              dia_da_semana_str = "QUI";
+              break;
+          case 6:
+              dia_da_semana_str = "SEX";
+              break;
+          case 7:
+              dia_da_semana_str = "SAB";
+              break;
+          default:
+              break;
+      }
         int hora = DIA_ATUAL.get(Calendar.HOUR);// RECEBE O DIA ATUAL ANO ...
         int minuto = DIA_ATUAL.get(Calendar.MINUTE);// RECEBE O DIA ATUAL ANO ...
         int segundo = DIA_ATUAL.get(Calendar.SECOND);// RECEBE O DIA ATUAL ANO ...
